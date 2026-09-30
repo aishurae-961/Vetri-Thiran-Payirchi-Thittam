@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home Planner - PocketSmart AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f5f2;
+            color: #222;
+        }
+
+        nav {
+            background: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #b88a44;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 20px;
+        }
+
+        .page {
+            max-width: 1050px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .heading .small {
+            color: #b88a44;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .heading h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .heading p {
+            color: #777;
+            font-size: 17px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .box h2 {
+            margin-bottom: 8px;
+            font-size: 25px;
+        }
+
+        .box .description {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
+            font-size: 15px;
+            background: white;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #b88a44;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 9px;
+            background: #222;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .result {
+            background: #f8f3eb;
+            border-left: 5px solid #b88a44;
+        }
+
+        .result-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .result h2 {
+            margin-bottom: 20px;
+        }
+
+        .details {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .details p {
+            margin: 8px 0;
+            color: #555;
+        }
+
+        .recommendation {
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+            text-decoration: none;
+        }
+
+        @media (max-width: 800px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .heading h1 {
+                font-size: 34px;
+            }
+
+            nav {
+                padding: 18px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Pocket<span>Smart</span> AI
+    </div>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/history">History</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+</nav>
+
+
+<div class="page">
+
+    <div class="heading">
+
+        <div class="small">
+            SMART HOME PLANNING
+        </div>
+
+        <h1>
+            🏠 Home Planner
+        </h1>
+
+        <p>
+            Plan your home essentials according to your budget.
+        </p>
+
+    </div>
+
+
+    <div class="content">
+
+        <!-- FORM -->
+
+        <div class="box">
+
+            <h2>
+                Plan Your Home
+            </h2>
+
+            <p class="description">
+                Enter your requirements and let AI suggest a suitable option.
+            </p>
+
+            <form action="/home" method="post">
+
+                <label>
+                    💰 Budget
+                </label>
+
+                <input
+                    type="number"
+                    name="budget"
+                    placeholder="Enter your budget"
+                    required
+                >
+
+
+                <label>
+                    🏠 Room Type
+                </label>
+
+                <select name="room_type" required>
+
+                    <option value="">
+                        Select Room
+                    </option>
+
+                    <option value="Living Room">
+                        Living Room
+                    </option>
+
+                    <option value="Bedroom">
+                        Bedroom
+                    </option>
+
+                    <option value="Dining Room">
+                        Dining Room
+                    </option>
+
+                    <option value="Kitchen">
+                        Kitchen
+                    </option>
+
+                </select>
+
+
+                <label>
+                    💡 Item
+                </label>
+
+                <select name="item" required>
+
+                    <option value="">
+                        Select Item
+                    </option>
+
+                    <option value="Lights">
+                        Lights
+                    </option>
+
+                    <option value="Ceiling Fan">
+                        Ceiling Fan
+                    </option>
+
+                    <option value="Dining Table">
+                        Dining Table
+                    </option>
+
+                </select>
+
+
+                <label>
+                    🔢 Quantity
+                </label>
+
+                <input
+                    type="number"
+                    name="quantity"
+                    min="1"
+                    placeholder="Enter quantity"
+                    required
+                >
+
+
+                <button type="submit">
+                    Get AI Recommendation →
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="box result">
+
+            <div class="result-icon">
+                💡
+            </div>
+
+            <h2>
+                Your Recommendation
+            </h2>
+
+
+            {% if recommendation %}
+
+                <div class="details">
+
+                    <p>
+                        <strong>Budget:</strong>
+                        ₹{{ budget }}
+                    </p>
+
+                    <p>
+                        <strong>Room:</strong>
+                        {{ room_type }}
+                    </p>
+
+                    <p>
+                        <strong>Item:</strong>
+                        {{ item }}
+                    </p>
+
+                    <p>
+                        <strong>Quantity:</strong>
+                        {{ quantity }}
+                    </p>
+
+                </div>
+
+
+                <div class="recommendation">
+
+                    {{ recommendation }}
+
+                </div>
+
+            {% else %}
+
+                <p class="description">
+                    Your AI recommendation will appear here
+                    after you submit your requirements.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <a href="/" class="back">
+        ← Back to Home
+    </a>
+
+</div>
+
+</body>
+</html>

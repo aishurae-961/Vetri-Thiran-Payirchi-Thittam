@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>History - PocketSmart AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f5f2;
+            color: #222;
+        }
+
+        nav {
+            background: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #b88a44;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 20px;
+        }
+
+        .page {
+            max-width: 950px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .small {
+            color: #b88a44;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .heading h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .heading p {
+            color: #777;
+            font-size: 17px;
+        }
+
+        .history-card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            border-left: 5px solid #b88a44;
+        }
+
+        .history-card h2 {
+            margin-bottom: 18px;
+            font-size: 23px;
+        }
+
+        .input-data {
+            background: #f8f3eb;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .recommendation {
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .recommendation-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .empty {
+            background: white;
+            padding: 60px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+        }
+
+        .empty-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .empty h2 {
+            margin-bottom: 10px;
+        }
+
+        .empty p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #222;
+            color: white;
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 8px;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+            text-decoration: none;
+        }
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            .heading h1 {
+                font-size: 34px;
+            }
+
+            nav a {
+                margin-left: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Pocket<span>Smart</span> AI
+    </div>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/history">History</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+</nav>
+
+
+<div class="page">
+
+    <div class="heading">
+
+        <div class="small">
+            YOUR SMART PLANNING
+        </div>
+
+        <h1>
+            📜 Recommendation History
+        </h1>
+
+        <p>
+            View your previous AI-powered recommendations.
+        </p>
+
+    </div>
+
+
+    {% if history %}
+
+        {% for item in history %}
+
+            <div class="history-card">
+
+                <h2>
+                    {% if item["planner_type"] == "Home" %}
+                        🏠 Home Planner
+                    {% elif item["planner_type"] == "Party" %}
+                        🎉 Party Planner
+                    {% elif item["planner_type"] == "Jewelry" %}
+                        💎 Jewelry Planner
+                    {% else %}
+                        {{ item["planner_type"] }}
+                    {% endif %}
+                </h2>
+
+
+                <div class="input-data">
+
+                    <strong>Planning Details</strong>
+
+                    <br>
+
+                    {{ item["input_data"] }}
+
+                </div>
+
+
+                <div class="recommendation">
+
+                    <div class="recommendation-title">
+                        💡 AI Recommendation
+                    </div>
+
+                    {{ item["recommendation"] }}
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                📭
+            </div>
+
+            <h2>
+                No History Yet
+            </h2>
+
+            <p>
+                Your recommendations will appear here after
+                you use one of the planners.
+            </p>
+
+            <a href="/" class="button">
+                Start Planning →
+            </a>
+
+        </div>
+
+    {% endif %}
+
+
+    <a href="/" class="back">
+        ← Back to Home
+    </a>
+
+</div>
+
+</body>
+</html>

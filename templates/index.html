@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PocketSmart AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f5f2;
+            color: #222;
+        }
+
+        /* NAVBAR */
+        nav {
+            width: 100%;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .logo span {
+            color: #b88a44;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .login-btn {
+            background: #222;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 500px;
+            padding: 80px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .small-title {
+            color: #b88a44;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #b88a44;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .start-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #222;
+            color: white;
+            padding: 15px 28px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .hero-card {
+            width: 380px;
+            height: 300px;
+            background: linear-gradient(135deg, #d8c2a4, #f1e6d5);
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        /* PLANNERS */
+        .planners {
+            padding: 70px 7%;
+            background: white;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 280px;
+            padding: 35px 25px;
+            background: #f8f6f3;
+            border-radius: 18px;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: #e8d5b9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #b07b32;
+            font-weight: bold;
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 70px 7%;
+            text-align: center;
+            background: #f7f5f2;
+        }
+
+        .feature-list {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .feature {
+            width: 220px;
+        }
+
+        .feature-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #777;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            color: #bbb;
+            margin-top: 8px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a:not(.login-btn) {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 5%;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-card {
+                width: 100%;
+                max-width: 350px;
+                height: 250px;
+            }
+
+            .planners,
+            .features {
+                padding: 55px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+    <div class="logo">
+        Pocket<span>Smart</span> AI
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/history">History</a>
+        <a href="/signup">Sign Up</a>
+        <a href="/login" class="login-btn">Login</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+    <div class="hero-text">
+
+        <div class="small-title">
+            SMART BUDGET PLANNING
+        </div>
+
+        <h1>
+            Plan Smart.<br>
+            Spend <span>Better.</span>
+        </h1>
+
+        <p>
+            PocketSmart AI helps you make smart recommendations
+            based on your budget, needs and preferences.
+        </p>
+
+        <a href="/home" class="start-btn">
+            Start Planning →
+        </a>
+
+    </div>
+
+
+    <div class="hero-card">
+        💡
+    </div>
+
+</section>
+
+
+<!-- PLANNERS -->
+<section class="planners">
+
+    <h2 class="section-title">
+        Explore Our Planners
+    </h2>
+
+    <p class="section-subtitle">
+        Choose a planner and get personalized AI recommendations.
+    </p>
+
+
+    <div class="cards">
+
+        <!-- HOME -->
+        <div class="card">
+
+            <div class="icon">
+                🏠
+            </div>
+
+            <h3>
+                Home Planner
+            </h3>
+
+            <p>
+                Plan your home essentials according to your
+                budget, room and requirements.
+            </p>
+
+            <a href="/home">
+                Plan Your Home →
+            </a>
+
+        </div>
+
+
+        <!-- PARTY -->
+        <div class="card">
+
+            <div class="icon">
+                🎉
+            </div>
+
+            <h3>
+                Party Planner
+            </h3>
+
+            <p>
+                Organize your party with smart suggestions
+                for food, decoration and arrangements.
+            </p>
+
+            <a href="/party">
+                Plan Your Party →
+            </a>
+
+        </div>
+
+
+        <!-- JEWELRY -->
+        <div class="card">
+
+            <div class="icon">
+                💎
+            </div>
+
+            <h3>
+                Jewelry Planner
+            </h3>
+
+            <p>
+                Find suitable jewelry recommendations based
+                on your budget, occasion and style.
+            </p>
+
+            <a href="/jewelry">
+                Plan Jewelry →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="features">
+
+    <h2 class="section-title">
+        Why PocketSmart AI?
+    </h2>
+
+    <p class="section-subtitle">
+        Simple planning powered by AI.
+    </p>
+
+
+    <div class="feature-list">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🤖
+            </div>
+
+            <h3>
+                AI Recommendations
+            </h3>
+
+            <p>
+                Get personalized suggestions using Gemini AI.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                💰
+            </div>
+
+            <h3>
+                Budget Friendly
+            </h3>
+
+            <p>
+                Recommendations are based on your available budget.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📜
+            </div>
+
+            <h3>
+                Save History
+            </h3>
+
+            <p>
+                View your previous recommendations anytime.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Easy to Use
+            </h3>
+
+            <p>
+                Simple and quick planning experience.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <h3>
+        PocketSmart AI
+    </h3>
+
+    <p>
+        Your smart budget & recommendation assistant.
+    </p>
+
+    <p>
+        © 2026 PocketSmart AI. All rights reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>
